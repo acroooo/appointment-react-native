@@ -2,17 +2,18 @@ import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
-  Modal,
   StyleSheet,
   View,
   Pressable,
 } from 'react-native';
 
+import Form from './src/components/Form';
+
 const App = () => {
   const [modal, setModal] = useState(false);
 
-  const createRegHandler = () => {
-    setModal(true);
+  const crearCitaHandler = () => {
+    console.log('crearCitaHandler');
   };
 
   return (
@@ -23,16 +24,14 @@ const App = () => {
       <View style={styles.bannerSection}>
         <Text style={styles.title}>Buenos días</Text>
         <Text style={styles.title}>Hernán</Text>
-        <Pressable onPress={createRegHandler} style={styles.btn}>
+        <Pressable onPress={() => setModal(true)} style={styles.btn}>
           <Text style={styles.btnText}>Crear reclamo</Text>
         </Pressable>
       </View>
       <View>
         <Text>Vecinos</Text>
       </View>
-      <Modal animationType="slide" visible={modal}>
-        <Text>Modal</Text>
-      </Modal>
+      <Form modal={modal} crearCitaHandler={crearCitaHandler}/>
     </SafeAreaView>
   );
 };
